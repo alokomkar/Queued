@@ -7,7 +7,8 @@ class Chapter( var chapterId : String = "",
                var programLanguage : Int = LANGUAGE_JAVA,
                var title : String = "",
                var description : String = "",
-               var imageUrl : String = "" ) {
+               var imageUrl : String = "",
+               var isPaid : Boolean = false ) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

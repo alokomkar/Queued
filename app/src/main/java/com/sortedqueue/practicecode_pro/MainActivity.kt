@@ -31,7 +31,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadDashboardFragment() {
-
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.addToBackStack(null)
+        logoFragment = LogoFragment()
+        fragmentTransaction.replace(container.id, logoFragment).commit()
     }
 
     private fun loadCarousalFragment() {

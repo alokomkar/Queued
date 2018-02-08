@@ -1,4 +1,4 @@
-package com.sortedqueue.practicecode_pro.auth
+package com.sortedqueue.practicecode_pro.dashboard
 
 import android.os.Bundle
 import android.support.annotation.NonNull
@@ -10,12 +10,16 @@ import android.view.ViewGroup
 import com.sortedqueue.practicecode_pro.R
 
 /**
- * Created by Alok on 07/02/18.
+ * Created by Alok on 08/02/18.
  */
-class LogoFragment : Fragment() {
+class DashboardFragment : Fragment() {
 
     override fun onCreateView(@NonNull inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_logo, container, false)
+        return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
 }

@@ -23,4 +23,6 @@ val AUTH_GOOGLE = 3
 val LANGUAGE_JAVA = 0
 val LANGUAGE_KOTLIN = 1
 
+val SELECTED_CHAPTER = "selected_chapter"
+
 

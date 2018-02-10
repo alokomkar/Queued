@@ -1,4 +1,4 @@
-package com.sortedqueue.practicecode_pro.dashboard
+package com.sortedqueue.practicecode_pro.codebase
 
 import android.os.Bundle
 import android.support.annotation.NonNull
@@ -10,19 +10,12 @@ import android.view.ViewGroup
 import com.sortedqueue.practicecode_pro.R
 import com.sortedqueue.practicecode_pro.base.*
 import com.sortedqueue.practicecode_pro.main.BaseMainFragment
-import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_code_base.*
 
 /**
- * Created by Alok on 08/02/18.
+ * Created by Alok on 10/02/18.
  */
-class DashboardFragment : BaseMainFragment(), DashboardView {
-
-    private var mSelectedChapter : Chapter ?= null
-    private lateinit var mDashboardPresenter : DashboardPresenter
-
-    override fun getSelectedChapter(): Chapter {
-        return mSelectedChapter!!
-    }
+class CodeBaseFragment : BaseMainFragment(), CodeBaseView {
 
     override fun showProgressDialog(message: Int) {
         progressLayout.show()
@@ -42,26 +35,23 @@ class DashboardFragment : BaseMainFragment(), DashboardView {
             context!!.showToast(errorMessage)
     }
 
-    override fun getLanguage(): Int {
-        return LANGUAGE_JAVA
-    }
+    override fun getCodeBaseForChapter(codeBaseList: ArrayList<CodeBase>) {
+        val codeBase = codeBaseList[0]
+        articleTitleTextView.text = codeBase.title
+        articleDescriptionTextView.text = codeBase.description
+        articleProgramRecyclerView.layoutManager = LinearLayoutManager( context )
+        articleProgramRecyclerView.adapter = CodeRecyclerAdapter( codeBase.programCode, "java" )
 
-    override fun retrieveChapters(chapters: ArrayList<Chapter>) {
-        chaptersRecyclerView.layoutManager = LinearLayoutManager( context )
-        chaptersRecyclerView.adapter = ChapterRecyclerAdapter( chapters, this )
-    }
-
-    override fun onChapterSelected(chapter: Chapter) {
-        mSelectedChapter = chapter
-        mMainView.loadCodeBaseFragment( mSelectedChapter!! )
+        hideProgressDialog()
     }
 
     override fun onCreateView(@NonNull inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+        return inflater.inflate(R.layout.fragment_code_base, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mDashboardPresenter = DashboardPresenter(this)
+        showProgressDialog(R.string.loading_content)
+        CodeBasePresenter( this, arguments!!.getParcelable(SELECTED_CHAPTER) )
     }
 }

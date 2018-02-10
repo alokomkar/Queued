@@ -3,4 +3,5 @@
     <string name="logo">Logo</string>
     <string name="loading">Loading Content</string>
     <string name="loading_chapters">Loading Chapters</string>
+    <string name="loading_content">Loading Content</string>
 </resources>

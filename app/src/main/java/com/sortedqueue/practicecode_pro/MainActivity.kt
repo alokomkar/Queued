@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import com.sortedqueue.practicecode_pro.auth.LogoFragment
 import com.sortedqueue.practicecode_pro.base.Chapter
+import com.sortedqueue.practicecode_pro.base.SELECTED_CHAPTER
+import com.sortedqueue.practicecode_pro.codebase.CodeBaseFragment
 import com.sortedqueue.practicecode_pro.main.MainView
 import com.sortedqueue.practicecode_pro.dashboard.DashboardFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,8 +24,15 @@ class MainActivity : AppCompatActivity(), MainView {
 
     }
 
+    private var codeBaseFragment : CodeBaseFragment ?= null
     override fun loadCodeBaseFragment(chapter: Chapter) {
-
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.addToBackStack(null)
+        codeBaseFragment = CodeBaseFragment()
+        val bundle = Bundle()
+        bundle.putParcelable( SELECTED_CHAPTER, chapter )
+        codeBaseFragment!!.arguments = bundle
+        fragmentTransaction.replace(container.id, codeBaseFragment).commitAllowingStateLoss()
     }
 
     override fun showError(errorMessage: String) {

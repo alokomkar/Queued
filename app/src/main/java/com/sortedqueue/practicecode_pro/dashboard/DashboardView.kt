@@ -11,7 +11,7 @@ interface DashboardView : BaseView {
 
     fun getLanguage() : Int
     fun retrieveChapters( chapters : ArrayList<Chapter> )
-    fun getCodeBaseForChapter( codeBaseList : ArrayList<CodeBase> )
+
     fun onChapterSelected( chapter: Chapter )
     fun getSelectedChapter() : Chapter
 

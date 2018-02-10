@@ -15,4 +15,9 @@ class DataManager {
         mChaptersList.add( Chapter( chapterId, LANGUAGE_JAVA, "Classes and Objects", "Creating objects by mapping real world information" ) )
     }
 
+    fun fetchChaptersList() : ArrayList<Chapter> {
+        return mChaptersList
+    }
+
+
 }

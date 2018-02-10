@@ -1,5 +1,6 @@
 package com.sortedqueue.practicecode_pro.dashboard
 
+import com.sortedqueue.practicecode_pro.base.Chapter
 import com.sortedqueue.practicecode_pro.base.DataManager
 
 /**
@@ -14,7 +15,7 @@ class DashboardPresenter( val dashboardView : DashboardView ) {
     }
 
     private fun fetchChapters() {
-
+        dashboardView.retrieveChapters( dataManager.fetchChaptersList() )
     }
 
 }

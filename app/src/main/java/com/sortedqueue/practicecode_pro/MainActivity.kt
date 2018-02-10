@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), MainView {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.addToBackStack(null)
         dashboardFragment = DashboardFragment()
-        fragmentTransaction.replace(container.id, dashboardFragment).commit()
+        fragmentTransaction.replace(container.id, dashboardFragment).commitAllowingStateLoss()
     }
 
     override fun loadCarousalFragment() {
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     override fun onBackPressed() {
-        if( supportFragmentManager.backStackEntryCount > 1 ) {
+        if( supportFragmentManager.backStackEntryCount > 2 ) {
             supportFragmentManager.popBackStack()
         }
         else

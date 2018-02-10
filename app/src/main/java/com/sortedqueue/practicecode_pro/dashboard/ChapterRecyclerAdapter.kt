@@ -37,7 +37,7 @@ class ChapterRecyclerAdapter( private val chapters : ArrayList<Chapter>, val das
         }
 
         val titleTextView = itemView.findViewById<TextView>(R.id.titleTextView)!!
-        val subTitleTextView = itemView.findViewById<TextView>(R.id.titleTextView)!!
+        val subTitleTextView = itemView.findViewById<TextView>(R.id.subTitleTextView)!!
 
         init {
             itemView.setOnClickListener(this)
